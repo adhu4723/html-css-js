@@ -1,0 +1,96 @@
+**Introduction to JavaScript**
+JavaScript is a versatile programming language commonly used for web development to create interactive web pages. It is executed in the browser and can also be used on the server-side with Node.js.
+
+**Variables (var, let, const)**
+Variables store data that can be manipulated. There are three ways to declare variables:
+- `var`: Function-scoped and can be redeclared.
+- `let`: Block-scoped and cannot be redeclared in the same scope.
+- `const`: Block-scoped and cannot be reassigned.
+
+Example:
+```javascript
+var name = "John";
+let age = 25;
+const PI = 3.1416;
+```
+
+**Data Types & Type Conversion**
+JavaScript has different data types:
+- Primitive: `String`, `Number`, `Boolean`, `Undefined`, `Null`, `Symbol`, `BigInt`
+- Non-primitive: `Object`, `Array`, `Function`
+
+Example:
+```javascript
+let num = 42; // Number
+let str = "Hello"; // String
+let isTrue = true; // Boolean
+let data = null; // Null
+let value; // Undefined
+let person = {name: "Alice", age: 30}; // Object
+```
+
+Type conversion:
+```javascript
+let numStr = String(100); // "100"
+let strNum = Number("100"); // 100
+let boolNum = Boolean(1); // true
+```
+
+**Operators & Expressions**
+Operators are used to perform operations on variables and values.
+- Arithmetic: `+`, `-`, `*`, `/`, `%`, `**`
+- Comparison: `==`, `===`, `!=`, `!==`, `>`, `<`, `>=`, `<=`
+- Logical: `&&`, `||`, `!`
+
+Example:
+```javascript
+let sum = 5 + 10; // 15
+let isEqual = (5 === "5"); // false
+let andOperator = (true && false); // false
+```
+
+**Control Structures (if, switch, loops)**
+Control structures manage the flow of execution.
+
+`if-else` statement:
+```javascript
+let num = 10;
+if (num > 0) {
+    console.log("Positive number");
+} else {
+    console.log("Negative number");
+}
+```
+
+`switch` statement:
+```javascript
+let day = "Monday";
+switch (day) {
+    case "Monday":
+        console.log("Start of the week");
+        break;
+    case "Friday":
+        console.log("Weekend is near");
+        break;
+    default:
+        console.log("Midweek");
+}
+```
+
+Loops:
+`for` loop:
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+```
+
+`while` loop:
+```javascript
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+```
+
