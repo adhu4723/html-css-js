@@ -1,0 +1,132 @@
+**Functions & Scope**
+
+## **1. Function Declarations & Expressions**
+
+### **Function Declaration**
+A function declaration is when you define a function using the `function` keyword with a name. It can be called before its definition due to **hoisting**.
+
+#### Example:
+```javascript
+console.log(add(5, 3)); // Works due to hoisting
+
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(10, 7)); // 17
+```
+Since function declarations are hoisted, the function `add` can be called even before it is defined.
+
+---
+
+### **Function Expression**
+A function expression is when you assign a function to a variable. It is **not hoisted**, meaning it cannot be called before its definition.
+
+#### Example:
+```javascript
+console.log(subtract(5, 3)); // Error! Cannot access before initialization
+
+const subtract = function(a, b) {
+    return a - b;
+};
+
+console.log(subtract(10, 7)); // 3
+```
+Since function expressions are not hoisted, calling `subtract` before its definition will cause an error.
+
+---
+
+## **2. Arrow Functions**
+Arrow functions (`=>`) provide a shorter syntax for writing functions. They are commonly used in modern JavaScript.
+
+### **Example:**
+```javascript
+const multiply = (a, b) => {
+    return a * b;
+};
+
+console.log(multiply(4, 5)); // 20
+```
+If the function has only one expression, you can **omit the `{}` and `return`**:
+```javascript
+const divide = (a, b) => a / b;
+console.log(divide(10, 2)); // 5
+```
+If the function has only **one parameter**, you can omit the parentheses:
+```javascript
+const square = x => x * x;
+console.log(square(6)); // 36
+```
+
+**Key Differences from Regular Functions:**
+- **Does not have its own `this`** (it inherits `this` from the surrounding scope).
+- **Cannot be used as constructors** (you cannot use `new` with arrow functions).
+- **No `arguments` object** inside arrow functions.
+
+---
+
+## **3. Callback Functions**
+A **callback function** is a function that is passed as an argument to another function and executed later.
+
+### **Example: Passing a Callback**
+```javascript
+function greet(name, callback) {
+    console.log("Hello, " + name);
+    callback();
+}
+
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+
+greet("Alice", sayGoodbye);
+```
+**Output:**
+```
+Hello, Alice
+Goodbye!
+```
+
+---
+
+### **Example: Callbacks with `setTimeout`**
+```javascript
+setTimeout(() => {
+    console.log("This runs after 2 seconds!");
+}, 2000);
+```
+
+---
+
+### **Example: Callbacks in Array Methods (`forEach`)**
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(num => {
+    console.log(num * 2);
+});
+```
+**Output:**
+```
+2
+4
+6
+8
+10
+```
+
+---
+
+### **Why Use Callbacks?**
+- Callbacks allow asynchronous operations (like fetching data from an API).
+- They help handle execution order (e.g., waiting for one function to finish before running another).
+- Used in many JavaScript methods (`map`, `filter`, `reduce`, `forEach`, etc.).
+
+---
+
+## **Conclusion**
+- **Function Declarations**: Named functions that are hoisted.
+- **Function Expressions**: Functions assigned to variables (not hoisted).
+- **Arrow Functions**: Shorter syntax, no own `this`, cannot be constructors.
+- **Callbacks**: Functions passed as arguments to be executed later.
+
