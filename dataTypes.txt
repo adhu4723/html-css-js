@@ -1,0 +1,49 @@
+ Primitive Data Types
+Primitive types are immutable (cannot be changed) and stored directly in memory.
+
+Types of Primitive Data Types:
+1)String → Represents text
+let name = "Alice";
+
+2)Number → Represents integers & floating-point numbers
+let age = 25;
+
+3)Boolean → Represents true or false
+let isStudent = true;
+
+4)Undefined → A variable declared but not assigned a value
+let x;
+console.log(x); // undefined
+
+5)Null → Represents an intentional absence of value
+let y = null;
+
+Characteristics of Primitive Data Types
+Stored directly in memory (stack).
+Immutable (cannot be modified).
+Copied by value.
+
+ Non-Primitive (Reference) Data Types
+
+Types of Non-Primitive Data Types:
+
+1)Object → Collection of key-value pairs
+let person = { name: "Bob", age: 30 };
+
+2)Array → Ordered collection of elements
+let numbers = [1, 2, 3, 4, 5];
+
+3)Function → Executable code
+function greet() {
+    return "Hello!";
+}
+Characteristics of Non-Primitive Data Types
+Stored in memory (heap) and accessed by reference.
+Mutable (can be modified).
+Copied by reference.
+
+
+
+
+
+
