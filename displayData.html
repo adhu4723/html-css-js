@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+    <h1>Submitted Details</h1>
+    <p><strong>Name:</strong> <span id="displayName"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+    <p><strong>Gender:</strong> <span id="displayGender"></span></p>
+    <p><strong>Country:</strong> <span id="displayCountry"></span></p>
+    <p><strong>State:</strong> <span id="displayState"></span></p>
+    <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+
+    <script>
+        let userData = JSON.parse(localStorage.getItem("userDetails"));
+
+        if (userData) {
+            document.getElementById("displayName").textContent = userData.name;
+            document.getElementById("displayDob").textContent = userData.dob;
+            document.getElementById("displayGender").textContent = userData.gender;
+            document.getElementById("displayCountry").textContent = userData.country;
+            document.getElementById("displayState").textContent = userData.state;
+            document.getElementById("displayPhone").textContent = userData.phone;
+        } else {
+            document.body.innerHTML = "<h1>No Data Found</h1>";
+        }
+    </script>
+</body>
+</html>
