@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Product List</title>
+</head>
+<body class="p-8 bg-gray-100">
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+            <thead>
+                <tr class="bg-gray-800 text-white">
+                    <th><input type="checkbox"></th>
+                    <th class="py-3 px-6 text-left">Product Name</th>
+                    <th class="py-3 px-6 text-left">Price ($)</th>
+                    <th class="py-3 px-6 text-left">Rating</th>
+                    <th class="py-3 px-6 text-left">Description</th>
+                   
+                </tr>
+            </thead>
+            <tbody id="products" class="text-gray-700"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const products = [
+            { name: "Wireless Headphones", price: 59.99, rating: 4.5, description: "Noise-canceling over-ear headphones with deep bass and 20-hour battery life." },
+            { name: "Smartphone", price: 699.99, rating: 4.7, description: "Latest 5G smartphone with a 6.5-inch AMOLED display and 128GB storage." },
+            { name: "Gaming Mouse", price: 49.99, rating: 4.6, description: "Ergonomic gaming mouse with customizable RGB lighting and 7 programmable buttons." },
+            { name: "Mechanical Keyboard", price: 89.99, rating: 4.8, description: "RGB backlit mechanical keyboard with blue switches and anti-ghosting keys." },
+            { name: "Smart Watch", price: 199.99, rating: 4.4, description: "Fitness tracking smartwatch with heart rate monitor and sleep tracking features." },
+            { name: "Portable Bluetooth Speaker", price: 39.99, rating: 4.3, description: "Waterproof Bluetooth speaker with 10-hour battery life and deep bass." },
+            { name: "Laptop Stand", price: 29.99, rating: 4.5, description: "Adjustable aluminum laptop stand for ergonomic typing and better cooling." },
+            { name: "4K Monitor", price: 349.99, rating: 4.7, description: "Ultra HD 27-inch 4K monitor with HDR support and 144Hz refresh rate." },
+            { name: "External Hard Drive", price: 119.99, rating: 4.6, description: "2TB portable external hard drive with fast data transfer speeds." },
+            { name: "Wireless Charging Pad", price: 24.99, rating: 4.2, description: "Fast wireless charger compatible with iPhone and Android devices." }
+        ];
+
+        // Select the products container
+        const productsContainer = document.getElementById('products');
+
+        // Generate table rows dynamically
+        productsContainer.innerHTML = products.map(item => 
+            `<tr class="border-b">
+                  <th><input type="checkbox"></th>
+                <td class="py-2 px-6">${item.name}</td>
+                <td class="py-2 px-6 text-green-600 font-semibold">$${item.price.toFixed(2)}</td>
+                <td class="py-2 px-6 text-yellow-500">${item.rating} ⭐</td>
+                <td class="py-2 px-6">${item.description}</td>
+            </tr>`
+        ).join('');
+    </script>
+</body>
+</html>
