@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body class="p-8 mx-auto bg-gray-100 grid lg:grid-cols-2 grid-cols-1 gap-4 h-[100vh]">
+    <div>
+        <h1 class="text-2xl font-bold mb-4 bg-blue-500 text-white py-4 px-3">ADD LIST</h1>
+        <form onsubmit="createList(event)" class="flex flex-col gap-4 mb-10">
+            <label>Item Name</label>
+            <input id="name" class="border-b-2 border-blue-500 focus:outline-none" type="text">
+            <label>Quantity</label>
+            <input id="quantity" class="border-b-2 border-blue-500 focus:outline-none" type="text">
+            <label>Rate</label>
+            <input id="rate" class="border-b-2 border-blue-500 focus:outline-none" type="text">
+            <button type="submit" class="bg-blue-500 px-4 py-2 text-white">ADD</button>
+        </form>
+    </div>
+    <div class="overflow-x-auto">
+<div class="border rounded p-4 flex justify-between mb-4">
+  <p>TOTAL ITEMS: <strong id="totalitem"></strong> </p>
+  <p>TOTAL RATE: <strong id="totalsum"></strong> </p>
+</div>
+   
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="px-3 border-2 text-left py-2">Sl no.</th>
+                    <th class="px-3 border-2 py-2">Item Name</th>
+                    <th class="px-3 py-2 border-2">Quantity</th>
+                    <th class="px-3 py-2 border-2">Rate</th>
+                </tr>
+            </thead>
+            <tbody id="display">
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+        let listItems = [];
+      
+
+        function createList(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const quantity = document.getElementById('quantity').value.trim();
+            const rate = Number(document.getElementById('rate').value.trim());
+
+              let totalitems=listItems.length+1;
+        document.getElementById('totalitem').innerHTML=` ${totalitems}`
+
+      
+            
+            if (!name || !quantity || !rate) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            let item = { name, quantity, rate };
+            listItems.push(item);
+
+              
+        let calculateSum=listItems.reduce((total,items)=>total+items.rate,0)
+        document.getElementById('totalsum').innerHTML=`${calculateSum}`
+
+            displaycontent();
+
+           
+        }
+
+        function displaycontent() {
+            document.getElementById('display').innerHTML = listItems.map((item, index) =>
+                `
+                <tr class="border-b-2 border-gray-300">
+                    <td class="px-3 py-2">${index + 1}</td>
+                    <td class="px-3 py-2">${item.name}</td>
+                    <td class="px-3 py-2">${item.quantity}</td>
+                    <td class="px-3 py-2">${item.rate}</td>
+                </tr>
+                `
+            ).join('');
+        }
+    </script>
+</body>
+</html>
