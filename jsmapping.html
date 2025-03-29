@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data with Total Marks</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Marks List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Math</th>
+                <th>Science</th>
+                <th>English</th>
+                <th>Total Marks</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+    </table>
+
+    <script>
+        // Sample student data with marks
+        const students = [
+            { id: 1, name: "Alice", marks: { math: 85, science: 90, english: 88 } },
+            { id: 2, name: "Bob", marks: { math: 78, science: 82, english: 75 } },
+            { id: 3, name: "Charlie", marks: { math: 92, science: 88, english: 95 } },
+            { id: 4, name: "David", marks: { math: 70, science: 65, english: 72 } }
+        ];
+
+        // Reference to the table body
+        const tableBody = document.getElementById("studentTable");
+
+        // Map through the students array and create table rows
+        tableBody.innerHTML = students.map(student => {
+            const { math, science, english } = student.marks;
+            const totalMarks = math + science + english; // Calculate total marks
+
+            return `
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${math}</td>
+                    <td>${science}</td>
+                    <td>${english}</td>
+                    <td><strong>${totalMarks}</strong></td>
+                </tr>
+            `;
+        }).join(""); // Use join("") to remove unwanted commas
+
+    </script>
+
+</body>
+</html>
